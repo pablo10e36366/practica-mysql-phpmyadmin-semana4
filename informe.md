@@ -9,7 +9,6 @@
 
 Crear dos contenedores, uno para MySQL y otro para phpMyAdmin, conectarlos mediante una red personalizada de Docker y crear una base de prueba desde la interfaz web. La práctica se realizó en Windows con Docker Desktop y contenedores Linux.
 
-La actividad aparece en Semana 4 y se titula TAS4. Aunque el texto de entrega de la plataforma menciona «semana 3», este informe corresponde a la actividad de MySQL y phpMyAdmin mostrada en la consigna.
 
 ## 2. Fundamentos y configuración final
 
