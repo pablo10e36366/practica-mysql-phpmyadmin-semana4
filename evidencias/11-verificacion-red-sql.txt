@@ -1,0 +1,59 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20261106191655
+Nombre de usuario: DESKTOP-6Q4I79O\pablo
+Usuario RunAs: DESKTOP-6Q4I79O\pablo
+Nombre de la configuración: 
+Máquina: DESKTOP-6Q4I79O (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: powershell.exe -NoLogo -NoProfile -NoExit -ExecutionPolicy Bypass -File C:\Users\pablo\practica_mysql_phpmyadmin_semana4\.local\11-verificacion-red-sql.ps1
+Id. de proceso: 3500
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+PRACTICA TAS4 - Pablo Ortega - 4.o semestre
+DNS, puerto 3306 y consulta desde el contenedor phpMyAdmin
+
+PS> docker cp scripts/verificar_red.php tas4_phpmyadmin:/tmp/verificar_red.php
+
+PS> docker exec --env-file .local/php-cliente.env tas4_phpmyadmin php /tmp/verificar_red.php
+{
+    "estado": "correcto",
+    "nombre_dns": "mysql",
+    "ip_resuelta": "172.18.0.2",
+    "tcp_3306": "accesible",
+    "servidor": {
+        "version": "8.4.13",
+        "base": "prueba_tas4",
+        "usuario": "pablo@%",
+        "puerto": "3306"
+    },
+    "filas": 3,
+    "productos": [
+        {
+            "id": "1",
+            "nombre": "Cuaderno",
+            "precio": "2.50"
+        },
+        {
+            "id": "2",
+            "nombre": "Lapiz",
+            "precio": "0.75"
+        },
+        {
+            "id": "3",
+            "nombre": "Carpeta",
+            "precio": "1.25"
+        }
+    ]
+}
+
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20261106191655
+**********************

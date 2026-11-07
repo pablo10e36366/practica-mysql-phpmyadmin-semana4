@@ -1,0 +1,38 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20261106191139
+Nombre de usuario: DESKTOP-6Q4I79O\pablo
+Usuario RunAs: DESKTOP-6Q4I79O\pablo
+Nombre de la configuración: 
+Máquina: DESKTOP-6Q4I79O (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: powershell.exe -NoLogo -NoProfile -NoExit -ExecutionPolicy Bypass -File C:\Users\pablo\practica_mysql_phpmyadmin_semana4\.local\04-red-y-permisos.ps1
+Id. de proceso: 21720
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+PRACTICA TAS4 - Pablo Ortega - 4.o semestre
+Dos contenedores en la red propia y permisos del usuario
+
+PS> docker network inspect tas4_red --format '{{range .Containers}}{{.Name}} -> {{.IPv4Address}}{{println}}{{end}}'
+tas4_mysql -> 172.18.0.2/16
+tas4_phpmyadmin -> 172.18.0.3/16
+
+
+PS> Get-Content sql/01_permisos.sql | docker exec -i tas4_mysql sh -c 'MYSQL_PWD=$MYSQL_ROOT_PASSWORD mysql -uroot'
+Grants for pablo@%
+GRANT USAGE ON *.* TO `pablo`@`%`
+GRANT ALL PRIVILEGES ON `prueba_tas4`.* TO `pablo`@`%`
+
+PS> docker inspect --format '{{.State.Health.Status}}' tas4_mysql
+healthy
+
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20261106191140
+**********************

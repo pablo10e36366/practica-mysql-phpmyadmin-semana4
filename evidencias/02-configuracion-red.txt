@@ -1,0 +1,51 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20261106190923
+Nombre de usuario: DESKTOP-6Q4I79O\pablo
+Usuario RunAs: DESKTOP-6Q4I79O\pablo
+Nombre de la configuración: 
+Máquina: DESKTOP-6Q4I79O (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: powershell.exe -NoLogo -NoProfile -NoExit -ExecutionPolicy Bypass -File C:\Users\pablo\practica_mysql_phpmyadmin_semana4\.local\02-configuracion-red.ps1
+Id. de proceso: 20692
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+PRACTICA TAS4 - Pablo Ortega - 4.o semestre
+Red y conexion entre servicios declaradas en Compose
+
+PS> Get-Content compose.yml | Select-String -Pattern 'image:|container_name:|PMA_HOST:|PMA_PORT:|127.0.0.1|networks:|red_tas4:|name: tas4_red|driver: bridge|name: tas4_mysql_data'
+
+    image: mysql:8.4
+    container_name: tas4_mysql
+    networks:
+    image: phpmyadmin:5.2.3-apache
+    container_name: tas4_phpmyadmin
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      - "127.0.0.1:${PMA_HTTP_PORT:-8084}:80"
+    networks:
+networks:
+  red_tas4:
+    name: tas4_red
+    driver: bridge
+    name: tas4_mysql_data
+
+
+
+PS> Get-Content .env.example | Select-Object -First 5
+# Copiar a .env.local y elegir contraseÃ±as nuevas antes de ejecutar.
+MYSQL_ROOT_PASSWORD=CAMBIAR_POR_UNA_CLAVE_ROOT_LARGA
+MYSQL_USER=pablo
+MYSQL_PASSWORD=CAMBIAR_POR_UNA_CLAVE_DE_USUARIO_LARGA
+PMA_HTTP_PORT=8084
+
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20261106190924
+**********************

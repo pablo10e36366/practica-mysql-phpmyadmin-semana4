@@ -1,0 +1,88 @@
+{
+  "estado": "completado",
+  "fecha": "2026-11-06",
+  "fin_utc": "2026-11-07T00:18:34.319064+00:00",
+  "estudiante": "Pablo Ortega",
+  "semana": 4,
+  "red": {
+    "nombre": "tas4_red",
+    "driver": "bridge",
+    "subred": "172.18.0.0/16",
+    "contenedores": {
+      "tas4_mysql": "172.18.0.2/16",
+      "tas4_phpmyadmin": "172.18.0.3/16"
+    }
+  },
+  "mysql": {
+    "nombre": "tas4_mysql",
+    "version": "8.4.13",
+    "ip": "172.18.0.2",
+    "puerto_interno": 3306,
+    "publicado_en_host": false,
+    "estado_salud": "healthy",
+    "volumen": "tas4_mysql_data"
+  },
+  "phpmyadmin": {
+    "nombre": "tas4_phpmyadmin",
+    "imagen": "phpmyadmin:5.2.3-apache",
+    "ip": "172.18.0.3",
+    "url": "http://127.0.0.1:8084",
+    "servidor": "mysql",
+    "puerto_mysql": 3306
+  },
+  "base": "prueba_tas4",
+  "tabla": "productos",
+  "productos": [
+    {
+      "id": "1",
+      "nombre": "Cuaderno",
+      "precio": "2.50"
+    },
+    {
+      "id": "2",
+      "nombre": "Lapiz",
+      "precio": "0.75"
+    },
+    {
+      "id": "3",
+      "nombre": "Carpeta",
+      "precio": "1.25"
+    }
+  ],
+  "pruebas": {
+    "mysql_saludable": true,
+    "phpmyadmin_en_ejecucion": true,
+    "red_bridge_propia": true,
+    "dns_entre_contenedores": true,
+    "conexion_mysql_3306": true,
+    "usuario_pablo_autenticado": true,
+    "base_creada_en_interfaz": true,
+    "datos_cargados_desde_interfaz": true,
+    "tres_registros_verificados": true,
+    "web_solo_loopback": true,
+    "mysql_sin_publicar_en_host": true,
+    "volumen_con_nombre": true,
+    "respuesta_http_correcta": true
+  },
+  "imagenes": {
+    "mysql:8.4": {
+      "id": "sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902",
+      "digests": [
+        "mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902"
+      ],
+      "arquitectura": "amd64"
+    },
+    "phpmyadmin:5.2.3-apache": {
+      "id": "sha256:f54a37b908b26caa7032c4eb0c7f3495fdd90208a06eed9c4b2c8e691dd1662c",
+      "digests": [
+        "phpmyadmin@sha256:f54a37b908b26caa7032c4eb0c7f3495fdd90208a06eed9c4b2c8e691dd1662c"
+      ],
+      "arquitectura": "amd64"
+    }
+  },
+  "incidencias": [
+    "Docker Desktop estaba detenido; se inicio antes del despliegue.",
+    "Se espero a que MySQL terminara su inicializacion y alcanzara healthy.",
+    "El editor SQL se controlo mediante el formulario visible y se comprobo la consulta escrita antes de ejecutarla."
+  ]
+}

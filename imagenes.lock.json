@@ -1,0 +1,16 @@
+{
+  "mysql:8.4": {
+    "id": "sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902",
+    "digests": [
+      "mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902"
+    ],
+    "arquitectura": "amd64"
+  },
+  "phpmyadmin:5.2.3-apache": {
+    "id": "sha256:f54a37b908b26caa7032c4eb0c7f3495fdd90208a06eed9c4b2c8e691dd1662c",
+    "digests": [
+      "phpmyadmin@sha256:f54a37b908b26caa7032c4eb0c7f3495fdd90208a06eed9c4b2c8e691dd1662c"
+    ],
+    "arquitectura": "amd64"
+  }
+}

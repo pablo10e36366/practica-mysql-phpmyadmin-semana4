@@ -1,0 +1,51 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20261106191753
+Nombre de usuario: DESKTOP-6Q4I79O\pablo
+Usuario RunAs: DESKTOP-6Q4I79O\pablo
+Nombre de la configuración: 
+Máquina: DESKTOP-6Q4I79O (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: powershell.exe -NoLogo -NoProfile -NoExit -ExecutionPolicy Bypass -File C:\Users\pablo\practica_mysql_phpmyadmin_semana4\.local\12-verificacion-final.ps1
+Id. de proceso: 22128
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+PRACTICA TAS4 - Pablo Ortega - 4.o semestre
+Estado, puertos, volumen y datos finales
+
+PS> docker compose --env-file .env.local ps
+NAME              IMAGE                     COMMAND                  SERVICE      CREATED         STATUS                   PORTS
+tas4_mysql        mysql:8.4                 "docker-entrypoint.sÔÇª"   mysql        7 minutes ago   Up 7 minutes (healthy)   3306/tcp, 33060/tcp
+tas4_phpmyadmin   phpmyadmin:5.2.3-apache   "/docker-entrypoint.ÔÇª"   phpmyadmin   7 minutes ago   Up 6 minutes             127.0.0.1:8084->80/tcp
+
+PS> docker port tas4_phpmyadmin
+80/tcp -> 127.0.0.1:8084
+
+PS> docker port tas4_mysql
+
+PS> docker inspect tas4_mysql --format '{{range .Mounts}}{{.Type}} {{.Name}} -> {{.Destination}}{{println}}{{end}}'
+volume tas4_mysql_data -> /var/lib/mysql
+
+
+PS> Get-Content sql/03_verificar.sql | docker exec -i tas4_mysql sh -c 'MYSQL_PWD=$MYSQL_ROOT_PASSWORD mysql -uroot'
+version_mysql
+8.4.13
+SCHEMA_NAME	DEFAULT_CHARACTER_SET_NAME	DEFAULT_COLLATION_NAME
+prueba_tas4	utf8mb4	utf8mb4_unicode_ci
+id	nombre	precio
+1	Cuaderno	2.50
+2	Lapiz	0.75
+3	Carpeta	1.25
+filas	total_precios
+3	4.50
+
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20261106191754
+**********************

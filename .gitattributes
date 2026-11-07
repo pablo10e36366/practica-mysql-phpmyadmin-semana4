@@ -1,0 +1,4 @@
+# Conservar los bytes originales para verificar SHA256SUMS.txt en otras copias.
+* -text
+*.png binary
+*.pdf binary
